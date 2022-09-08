@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_course_shop_app/screens/product_details_screen.dart';
 import 'package:flutter_course_shop_app/screens/products_overview_screen.dart';
 
 void main() {
@@ -14,22 +15,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.purple,
+          accentColor: Colors.deepOrange,
+          fontFamily: 'Lato'),
       home: ProductsOverviewScreen(),
+      routes: {
+        ProductDetailsScreen.routeName: (context) => ProductDetailsScreen()
+      },
     );
   }
 }
-
-// class MyHomePage extends StatelessWidget {
-//   const MyHomePage({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('MyShop'),
-//       ),
-//     );
-//   }
-// }
