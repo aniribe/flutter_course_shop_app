@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 
 class ProductsProvider with ChangeNotifier {
+  bool _showFavoritesOnly = false;
+
   // ignore: prefer_final_fields
   List<Product> _items = [
     Product(
@@ -41,6 +43,10 @@ class ProductsProvider with ChangeNotifier {
 
   List<Product> get items {
     return [..._items];
+  }
+
+  List<Product> get favoriteItems {
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
   }
 
   void addProduct() {
