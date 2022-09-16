@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_course_shop_app/providers/products_provider.dart';
+import 'package:flutter_course_shop_app/screens/cart_screen.dart';
+import 'package:flutter_course_shop_app/widgets/badge.dart';
 import 'package:provider/provider.dart';
 import '../models/product.dart';
+import '../providers/cart.dart';
 import '../widgets/product_item.dart';
 import '../widgets/products_grid.dart';
 
@@ -48,6 +51,18 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
               ),
             ],
           ),
+          Consumer<Cart>(
+            builder: (_, cart, child) => Badge(
+              value: cart.itemCount.toString(),
+              child: child as Widget,
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.shopping_cart),
+              onPressed: () {
+                Navigator.of(context).pushNamed(CartScreen.routeName);
+              },
+            ),
+          )
         ],
       ),
       body: ProductsGrid(showOnlyFavorites: showOnlyFavorites),
